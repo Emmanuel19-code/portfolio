@@ -9,22 +9,10 @@ import CloseIcon from '@mui/icons-material/Close';
 import StorageIcon from '@mui/icons-material/Storage';
 import image1 from "../images/Hospitail.jpg"
 import server from "../images/server.jpg"
-
+import useNavigation from '../useNavigation';
 
 function Home() {
-    const [show,setShow] = useState(false);
-    const [close,setClose] = useState(false)
-    const[menu,setMenu] = useState(true)
-    const display = () =>{
-        setShow(true)
-        setClose(true)
-        setMenu(false)
-    }
-    const closedisplay = () =>{
-        setShow(false)
-        setClose(false)
-        setMenu(true)
-    }
+    const {show,close,menu,display,closedisplay} = useNavigation()
   return (
        <div className="bg-[#1E1E1E] h-full p-4">
          <div className="flex items-center p-2 sticky bg-[#1E1E1E] top-0 z-30 text-gray-500">
@@ -40,15 +28,14 @@ function Home() {
                     </ul>
                 </div>
             </div>
-            <div className="md:hidden menu flex relative">
+            <div className="md:hidden flex relative">
                 {
                     menu 
                      &&
-                <div className="showMenu " onClick={display}>
+                <div className="flex md:hidden" onClick={display}>
                     <MenuIcon/>
                 </div>
                 }
-                
                  {
                     close &&
                     <div onClick={closedisplay}>
